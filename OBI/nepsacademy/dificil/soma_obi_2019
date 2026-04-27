@@ -1,0 +1,23 @@
+import sys
+
+input = sys.stdin.readline
+
+N, K = map(int, input().split())
+nums = map(int, input().split())
+
+prefix = 0
+ans = 0
+
+freq = {0: 1}
+
+for x in nums:
+    prefix += x
+
+    if prefix - K in freq:
+        ans += freq[prefix - K]
+
+    freq[prefix] = freq.get(prefix, 0) + 1
+
+print(ans)
+
+
